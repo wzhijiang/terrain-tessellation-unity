@@ -1,0 +1,9 @@
+# Unity Editor
+Library
+Logs
+Temp
+
+*.sln
+
+# Visual Studio Code
+.vsconfig
