@@ -1,9 +1,12 @@
 # Unity Editor
-Library
-Logs
-Temp
+Library/
+Logs/
+obj/
+Temp/
 
 *.sln
+*.csproj
 
 # Visual Studio Code
+.vs/
 .vsconfig
