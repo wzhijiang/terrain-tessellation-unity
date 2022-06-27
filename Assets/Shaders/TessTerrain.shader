@@ -10,6 +10,8 @@ Shader "Custom/TessTerrain"
         Tags { "RenderType"="Opaque" }  
         LOD 100
 
+        Cull Off
+
         Pass
         {
             HLSLPROGRAM
@@ -95,7 +97,7 @@ Shader "Custom/TessTerrain"
             [UNITY_partitioning("fractional_odd")]
             [UNITY_outputtopology("triangle_ccw")]
             [UNITY_patchconstantfunc("hsconst")]
-            [UNITY_outputcontrolpoints(3)]
+            [UNITY_outputcontrolpoints(4)]
             VertexData hs (InputPatch<VertexData, 4> patch, uint id : SV_OutputControlPointID)
             {
                 return patch[id];
@@ -126,7 +128,7 @@ Shader "Custom/TessTerrain"
                 float4 vVec = p01 - p00;
                 float4 normal = normalize(float4(cross(vVec.xyz, uVec.xyz), 0));
 
-                float4 p = p00 + (p10 - p00) * u + (p01 - p00) * v;
+                float4 p = p00 + uVec * u + vVec * v;
                 p += normal * height;
 
                 v2f o;
